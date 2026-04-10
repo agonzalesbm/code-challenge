@@ -1,0 +1,10 @@
+.taskCard {
+  border-radius: 8px;
+  border-color: whitesmoke;
+  border-style: solid;
+  max-width: 16rem;
+  display: flex;
+  direction: column;
+  justify-content: center;
+  align-items: center;
+}
