@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { EditableText } from "./EditableText"
+import { ExampleContext } from "./ExampleContext"
 export function TaskCard({
   task,
   index,
@@ -8,6 +9,11 @@ export function TaskCard({
 }) {
   const [isChecked, setIsChecked] = useState(false)
   const [currentText, setCurrentText] = useState(task.description)
+  const { text, setText } = useContext(ExampleContext)
+
+  useEffect(() => {
+    console.log(text);
+  }, [text])
 
   useEffect(() => {
     console.log(currentText)
@@ -15,14 +21,13 @@ export function TaskCard({
 
   return (
     <div style={{
-      gridRow: '1/3',
+      // gridRow: '1/3',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: '6px',
-      border: '4px',
-      borderStyle: 'solid',
+      border: '4px solid',
       borderRadius: '4px',
     }}>
       <div style={{

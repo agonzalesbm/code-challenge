@@ -13,7 +13,9 @@ class UserList extends React.Component {
   }
 
   async fetchUserList() {
+    if (this.controller) this.controller.abort();
     this.controller = new AbortController();
+
     const { signal } = this.controller;
     try {
       const userList = await userService.getUsers({ signal });
@@ -51,7 +53,7 @@ class UserList extends React.Component {
           </ul>
         </div>
         <div className='center-button'>
-          <button onClick={this.fetchUserList} className='button-style'>Fetch users</button>
+          <button onClick={() => this.fetchUserList()} className='button-style'>Fetch users</button>
         </div>
       </>
     );
